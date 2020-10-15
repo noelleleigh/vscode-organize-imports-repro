@@ -23,3 +23,22 @@ cwd: ~/dev/vscode-organize-imports-repro/subfolder
 > ~/dev/vscode-organize-imports-repro/.venv/bin/python3.9 ~/.vscode-insiders/extensions/ms-python.python-2020.9.114305/pythonFiles/pyvsc-run-isolated.py ~/.vscode-insiders/extensions/ms-python.python-2020.9.114305/pythonFiles/sortImports.py - --diff
 cwd: ~/dev/vscode-organize-imports-repro/subfolder
 ```
+
+## Hypothesis
+
+The change in current working directory seems to be the culprit, as I can reproduce the behavior with these commands:
+
+```bash
+(.venv) @ ~/dev/vscode-organize-imports-repro
+> % isort subfolder/main.py
+Fixing /Users/noelle/dev/vscode-organize-imports-repro/subfolder/main.py
+# Sorts correctly
+
+(.venv) @ ~/dev/vscode-organize-imports-repro
+> % cd subfolder
+
+(.venv) @ ~/dev/vscode-organize-imports-repro/subfolder
+> % isort main.py
+Fixing /Users/noelle/dev/vscode-organize-imports-repro/subfolder/main.py
+# Sorts incorrectly
+```
