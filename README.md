@@ -2,7 +2,7 @@
 
 Repro for [Sort imports stopped working (vscode-python/#14399)](https://github.com/microsoft/vscode-python/issues/14399)
 
-The code in `main.py` and `subfolder/main.py` have both had **Organize Imports** run on them, but `subfolder/main.py` has incorrectly grouped `library_a` and `library_b` with the third-party library `flask`.
+The code in [**main.py**](main.py) and [**subfolder/main.py**](subfolder/main.py) have both had **Organize Imports** run on them, but **subfolder/main.py** has incorrectly grouped `library_a` and `library_b` with the third-party library `flask`.
 
 ## Output during Organize Imports
 
